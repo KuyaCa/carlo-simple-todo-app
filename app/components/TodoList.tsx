@@ -9,9 +9,9 @@ interface TodoListProps {
 const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
   return (
     <div className="overflow-x-auto rounded-md">
-      <table className="table">
+      <table className="table table-zebra ">
         <thead>
-          <tr className='bg-gray-100'>
+          <tr className='bg-slate-700 text-white'>
             <th className='uppercase'>Task</th>
             <th className='uppercase'>Action</th>
           </tr>

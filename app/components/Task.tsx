@@ -43,7 +43,13 @@ const Task: React.FC<TaskProps> = ({ task }) => {
         <td className='cursor-pointer flex gap-5'>
             {/* Editing Task */}
             <AiOutlineEdit onClick={() => setOpenModalEdit(true) } className='text-yellow-600 hover:text-yellow-500' size={16} />
-                <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
+                <Modal 
+                    modalOpen={openModalEdit} 
+                    setModalOpen={(newState) => {
+                        setOpenModalEdit(newState); 
+                        return newState;
+                    }}
+                >
                     <form onSubmit={handleSubmitEditTodo}>
                         <h3 className='font-bold text-lg'>Edi task</h3>
                         <div className='modal-action'>
@@ -61,7 +67,13 @@ const Task: React.FC<TaskProps> = ({ task }) => {
 
             {/*  Deleting Task */}
             <BiTrashAlt onClick={() => setOpenModalDeleted(true) }className='text-red-800 hover:text-red-600' size={16} />
-                <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
+                <Modal 
+                    modalOpen={openModalDeleted} 
+                    setModalOpen={(newState) => {
+                        setOpenModalDeleted(newState); 
+                        return newState;
+                    }}
+                >
                     <h3 className='text-lg'>Are you sure, you want to delete this task?</h3>
                     <div className='modal-action'>
                         <button onClick={() => handeDeleteTask(task.id)} className='btn'>Yes</button>

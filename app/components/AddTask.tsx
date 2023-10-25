@@ -25,24 +25,33 @@ const AddTask = () => {
   };
 
   return (
-    <div>
-        <button onClick={() => setModalOpen(true)} className='btn btn-primary w-full text-white'>
+    <div className='text-end'>
+        <button 
+            onClick={() => setModalOpen(true)} 
+            className='btn btn-md mx-auto text-white text-md bg-[#0369a1] capitalize hover:bg-[#0473af]'
+          >
             Add new task
-            <FaPlus className='ml-2' size={15} />
+            <FaPlus size={14} />
         </button>
 
-        <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
+        <Modal 
+          modalOpen={modalOpen} 
+          setModalOpen={(newState) => {
+            setModalOpen(newState); 
+            return newState;
+        }}
+        >
           <form onSubmit={handleSubmitNewTodo}>
-            <h3 className='font-bold text-lg'>Add new task</h3>
+            <h3 className='font-bold text-lg text-start text-[#ff9966]'>Add new task</h3>
             <div className='modal-action'>
               <input
                 value={newTaskValue}
                 onChange={e => setNewTaskValue(e.target.value)}
                 type="text" 
                 placeholder="Type here" 
-                className="input input-bordered w-full" 
+                className="input input-bordered w-full focus:outline-none focus:border-[#0473af] focus:ring-2" 
               />
-              <button type='submit' className='btn btn-primary'>Submit</button>
+              <button type='submit' className='btn  bg-[#0369a1] capitalize hover:bg-[#0473af] text-white'>Submit</button>
             </div>
           </form>
         </Modal>
